@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">      
+  <form class="form-inline md-form mr-auto mb-4 d-flex justify-content-center" method="GET" action="{% url 'index' %}">
+      <input class="form-control mr-sm-2" type="text" placeholder="Job Title" aria-label="Search" name="title">
+      <input class="form-control mr-sm-2" type="text" placeholder="Job location" aria-label="Search" name="location">
+      <button class="btn rgba-stylish-strong btn-rounded btn-sm my-0 animated wobble" type="submit">Search</button>
+  </form>
+  <div class="row">
+    
+    {% for job in job_list %}
+    <div class="col-md-4 sm-4 mb-4 d-flex align-items-stretch">
+        <div class="card cad">
+            <div class="card-body rgba-stylish-strong white-text rounded-bottom">
+              <h4 class="card-title">{{job.title}}</h4>
+              <hr class="hr-light">
+              <p class="card-text white-text mb-4">{{job.summary}}</p>
+              <a href="{{job.url}}" class="white-text d-flex justify-content-end"><h5>Read more <i class="fas fa-angle-double-right"></i></h5></a>
+            </div>
+        </div>
+    </div>   
+    {% endfor %}
+      
+  </div>
+</div>
+{% endblock content %}
